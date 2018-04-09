@@ -8,7 +8,8 @@ def translate(text, source_language, dest_language):
         return _('Error: the translation service is not configured.')
     
     auth_key = app.config['TRANSLATOR_KEY']
-    r = requests.get('https://translate.yandex.net/api/v1.5/tr.json/translate?key={}&text={}&lang={}-{}'.format(auth_key, text, source_language, dest_language))
+    r = requests.get(
+        'https://translate.yandex.net/api/v1.5/tr.json/translate?key={}&text={}&lang={}-{}'.format(auth_key, text, source_language, dest_language))
 
     if r.status_code != 200:
         return _('Error: the translation service failed.')
